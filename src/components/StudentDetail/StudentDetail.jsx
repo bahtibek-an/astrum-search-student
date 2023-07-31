@@ -29,8 +29,8 @@ const StudentDetail = () => {
             <div className="mt-16 flex flex-wrap justify-between">
                 <div className="">
                     <span className="border rounded p-1 text-sm">{ student.season }</span>
-                    <h3 className="font-medium text-2xl my-2">{ student.full_name }</h3>
-                    <span className="">{ student.id }{ student.seria }</span>
+                    <h3 className="font-medium text-2xl my-2">{ student.ism } { student.familiya } { student.sharif }</h3>
+                    <span className="">{ student.seria }{ student.seria_number }</span>
                 </div>
                 <div className="mr-auto ml-56">
                     <div>
@@ -38,15 +38,17 @@ const StudentDetail = () => {
                             <h4 className="font-bold text-2xl">Progress</h4>
                         </div>
                         <ul>
-                            <li className="my-2">{ student.progress_0 }</li>
-                            <li className="my-2">{ student.progress_1 }</li>
-                            <li className="my-2">{ student.progress_2 }</li>
-                            <li className="my-2">{ student.progress_3 }</li>
-                            <li className="my-2">{ student.progress_4 }</li>
-                            <li className="my-2">{ student.progress_5 }</li>
+                            <li className="my-2">{ student.umumiy }</li>
+                            <li className="my-2">{ student.umumiy_ball }</li>
+                            <li className="my-2">{ student.modul_1 }</li>
+                            <li className="my-2">{ student.modul_ball_1 }</li>
+                            <li className="my-2">{ student.modul_2 }</li>
+                            <li className="my-2">{ student.modul_ball_2 }</li>
+                            <li className="my-2">{ student.modul_3 }</li>
+                            <li className="my-2">{ student.modul_ball_3 }</li>
                         </ul>
                     </div>
-                    <div className="mt-10">
+                    {/* <div className="mt-10">
                         <div>
                             <h4 className="font-bold text-2xl">Certificates</h4>
                         </div>
@@ -66,7 +68,7 @@ const StudentDetail = () => {
                                 </li>
                             )) }
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
