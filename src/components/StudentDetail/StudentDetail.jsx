@@ -5,8 +5,7 @@ import {useParams} from "react-router-dom";
 const StudentDetail = () => {
     const { seria } = useParams();
     const [ { students }, ] = useContext(AppContext);
-    const student = students.list.find((item) => item.seria_number === seria);
-
+    const student = students.list.find((item) => item.student?.seria_number == seria);
 
     if(students.isLoading) {
         return (
@@ -26,49 +25,91 @@ const StudentDetail = () => {
 
     return (
         <div className="container mx-auto">
-            <div className="mt-16 flex flex-wrap justify-between">
-                <div className="">
-                    <span className="border rounded p-1 text-sm">{ student.season }</span>
-                    <h3 className="font-medium text-2xl my-2">{ student.ism } { student.familiya } { student.sharif }</h3>
-                    <span className="">{ student.seria }{ student.seria_number }</span>
+            <div className="border rounded mt-16">
+                <div className="relative overflow-x-auto">
+                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
+                            <tr>
+                                <th scope="col" className="px-6 py-3">
+                                    Номер серии
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    ФИО
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Общий
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Общий балл
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Модуль 1
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Бал модуль 1
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Модуль 2
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Бал модуль 2 
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Модуль 3
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Бал модуль 3 
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Дата выдачи
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="bg-white border-b">
+                                <th scope="row" className="px-6 py-4 text-gray-900">
+                                    {student.student.seria}{student.student.seria_number}
+                                </th>
+                                <th scope="row" className="px-6 py-4 font-medium text-gray-900">
+                                    {student.student.ism} {student.student.familiya} {student.student.sharif}
+                                </th>
+                                <td className="px-6 py-4 text-gray-900">
+                                    {student.student.umumiy}
+                                </td>
+                                <td className="px-6 py-4 text-gray-900">
+                                    {student.student.umumiy_ball}
+                                </td>
+                                <td className="px-6 py-4 text-gray-900">
+                                    {student.student.modul_1}
+                                </td>
+                                <td className="px-6 py-4 text-gray-900">
+                                    {student.student.modul_ball_1}
+                                </td>
+                                <td className="px-6 py-4 text-gray-900">
+                                    {student.student.modul_2}
+                                </td>
+                                <td className="px-6 py-4 text-gray-900">
+                                    {student.student.modul_ball_2}
+                                </td>
+                                <td className="px-6 py-4 text-gray-900">
+                                    {student.student.modul_3}
+                                </td>
+                                <td className="px-6 py-4 text-gray-900">
+                                    {student.student.modul_ball_3}
+                                </td>
+                                <td className="px-6 py-4 text-gray-900 font-medium">
+                                    {student.student.berilgan_sana}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div className="mr-auto ml-56">
-                    <div>
-                        <div>
-                            <h4 className="font-bold text-2xl">Progress</h4>
-                        </div>
-                        <ul>
-                            <li className="my-2">{ student.umumiy }</li>
-                            <li className="my-2">{ student.umumiy_ball }</li>
-                            <li className="my-2">{ student.modul_1 }</li>
-                            <li className="my-2">{ student.modul_ball_1 }</li>
-                            <li className="my-2">{ student.modul_2 }</li>
-                            <li className="my-2">{ student.modul_ball_2 }</li>
-                            <li className="my-2">{ student.modul_3 }</li>
-                            <li className="my-2">{ student.modul_ball_3 }</li>
-                        </ul>
-                    </div>
-                    {/* <div className="mt-10">
-                        <div>
-                            <h4 className="font-bold text-2xl">Certificates</h4>
-                        </div>
-                        <ul>
-                            { student.certificates.map((item) => (
-                                <li className="border rounded my-4 p-2">
-                                    <h5 className="font-bold text-lg mb-4">{ item.certificate_name }</h5>
-                                    <div className="flex justify-between">
-                                        <a
-                                            className="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline"
-                                            href={item.certificate}
-                                            target="_blank"
-                                        >
-                                            Open certificate page</a>
-                                        <span className="text-gray-500 text-sm">{ item.certificate_date }</span>
-                                    </div>
-                                </li>
-                            )) }
-                        </ul>
-                    </div> */}
+                <div className='mt-6'>
+                    <img 
+                        className='m-auto'
+                        src={student.student.certificate} 
+                        alt='sertificate'
+                    />
                 </div>
             </div>
         </div>

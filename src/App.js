@@ -10,7 +10,7 @@ function App() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch("http://astrum.uz/api/students");
+            const response = await fetch("http://109.94.172.141/api/students");
             const { data } = await response.json();
             setState(prev => ({ ...prev, students: { list: data, isLoading: false } }));
         } catch (e) {
